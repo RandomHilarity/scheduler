@@ -1,17 +1,13 @@
 import React from "react";
 
-export default function Error(props) {
+export default function Empty(props) {
   return (
-    <main className="appointment__card appointment__card--error">
-      <section className="appointment__error-message">
-        <h1 className="text--semi-bold">Error</h1>
-        <h3 className="text--light">{props.message}</h3>
-      </section>
+    <main className="appointment__add">
       <img
-        className="appointment__error-close"
-        src="images/close.png"
-        alt="Close"
-        onClick={props.onClose}
+        className="appointment__add-button"
+        onClick={props.onAdd}
+        src="images/add.png"
+        alt="Add"
       />
     </main>
   );

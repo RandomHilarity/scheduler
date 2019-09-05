@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import InterviewerList from "../InterviewerList";
 import Button from "../Button";
+import InterviewerList from "../InterviewerList";
 
 export default function Form(props) {
-    const [name, setName] = useState(props.name || "");
-    const [interviewer, setInterviewer] = useState(props.interviewer || null);
-
-    const reset = function() {
-        setName("");
-        setInterviewer("");
-    }
-
-    const cancel = function() {
-        reset();
-        props.onCancel();
-    }
+  const [name, setName] = useState(props.name || "");
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const reset = function() {
+    setName("");
+    setInterviewer(null);
+  };
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -23,23 +17,22 @@ export default function Form(props) {
           <input
             className="appointment__create-input text--semi-bold"
             value={name}
-            name="name"
             type="text"
-            placeholder="Enter student name"
+            placeholder="Enter Student Name"
             onChange={event => setName(event.target.value)}
             onSubmit={event => event.preventDefault()}
           />
         </form>
         <InterviewerList
           interviewers={props.interviewers}
-          interviewer={interviewer}
-          setInterviewer={setInterviewer}
+          value={interviewer}
+          onChange={setInterviewer}
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={event => cancel()}>Cancel</Button>
-          <Button confirm onClick={event => props.onSave(name, interviewer)}>Save</Button>
+          <Button danger onClick={() => props.onCancel(reset())}>Cancel</Button>
+          <Button confirm onClick={() => props.onSave(name, interviewer)}>Save</Button>
         </section>
       </section>
     </main>
