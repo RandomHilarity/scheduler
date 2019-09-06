@@ -47,4 +47,3 @@ export function getInterview(state, interview) {
   results.interviewer = state.interviewers[interview.interviewer];
   return results;
 }
-
