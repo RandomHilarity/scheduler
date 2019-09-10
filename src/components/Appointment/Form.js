@@ -15,8 +15,13 @@ export default function Form(props) {
     props.onCancel();
   }
   const validate = function() {
+    console.log(interviewer, "interviewer")
     if(name === "") {
-      setError("Student name cannot be blank");
+      setError("Please enter a name");
+      return;
+    }
+    if(interviewer === null) {
+      setError("Please select an interviewer");
       return;
     }
     setError("");
