@@ -10,6 +10,17 @@ import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
 import useVisualMode from "hooks/useVisualMode";
 
+/*  Transition States
+*  SHOW - displays the appointment
+*  EMPTY - displays frame with add button
+*  SAVING - spinner until saving to db completed then SHOW
+*  DELETING - spinner until deleeting in db completed then EMPTY
+*  CREATE - shows empty FORM
+*  EDIT - shows modifiable populated FORM
+*  CONFIRM - shows confirm/cancel buttons
+*  ERROR_DELETE/CONFIRM - shows error message if db changes fail with error message
+*/
+
 export default function Appointment(props) {
 
   const { mode, transition, back } = useVisualMode(

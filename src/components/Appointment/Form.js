@@ -15,7 +15,6 @@ export default function Form(props) {
     props.onCancel();
   }
   const validate = function() {
-    console.log(interviewer, "interviewer")
     if(name === "") {
       setError("Please enter a name");
       return;
